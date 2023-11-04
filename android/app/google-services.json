@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "577284010119",
+    "project_id": "trendcraft-c44e4",
+    "storage_bucket": "trendcraft-c44e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577284010119:android:2f43ca448a64b53162c822",
+        "android_client_info": {
+          "package_name": "com.example.trendcraft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577284010119-3nl5foqjtg3rh9nie50gufhs1q6hgkqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYpj61CZEfBz2OewDlffat5fTN8aIF30s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577284010119-3nl5foqjtg3rh9nie50gufhs1q6hgkqs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "577284010119-7offrp9be13lhpkqq1na3vk66pal2o70.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.trendcraft.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
