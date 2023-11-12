@@ -1,4 +1,4 @@
-# trendcraft
+# Trendcraft
 
 A new Flutter project.
 
