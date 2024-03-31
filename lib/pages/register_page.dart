@@ -21,7 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   //Sign up user
   void signUp() async{
-    if(passwordController != confirmPasswordController)
+    if(passwordController.text != confirmPasswordController.text)
       {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Passwords do not match")));
         return;
@@ -56,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       const SizedBox(height: 50),
 
                       //logo
-                      Container(
+                      SizedBox(
                           height: 140,
                           child: Image.asset('assets/images/logo.png')
                       ),
@@ -93,11 +93,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Already a member?'),
-                          SizedBox(width: 4),
+                          const Text('Already a member?'),
+                          const SizedBox(width: 4),
                           GestureDetector(
                             onTap: widget.onTap,
-                            child: Text(
+                            child: const Text(
                                 'Login now',
                                 style: TextStyle(fontWeight: FontWeight.bold,)
                             ),

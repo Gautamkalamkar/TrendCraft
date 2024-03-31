@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 50),
 
                   //logo
-                  Container(
+                  SizedBox(
                     height: 140,
                     child: Image.asset('assets/images/logo.png')
                   ),
@@ -85,8 +85,8 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                    children: [
-                     Text('Not a member?'),
-                     SizedBox(width: 4),
+                     const Text('Not a member?'),
+                     const SizedBox(width: 4),
                      GestureDetector(
                        onTap: widget.onTap,
                        child: const Text(
