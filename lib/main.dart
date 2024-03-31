@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trendcraft/services/auth/auth_gate.dart';
 import 'package:trendcraft/services/auth/auth_service.dart';
+import 'package:trendcraft/themes/app_theme.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,9 +19,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: themeData,
       debugShowCheckedModeBanner: false,
-      home: AuthGate(),
+      home: const AuthGate(),
     );
   }
 }
