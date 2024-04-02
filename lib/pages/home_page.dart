@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,63 +18,79 @@ class _HomePageState extends State<HomePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //sign out user
-  void signOut()
-  {
-    final authService = Provider.of<AuthService>(context,listen: false);
+  void signOut() {
+    final authService = Provider.of<AuthService>(context, listen: false);
     authService.signOut();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Page'),
-        actions: [IconButton(
-          onPressed: signOut, icon: const Icon(Icons.logout),
-        )],
+      appBar: AppBar(
+        title: const Text('Home Page'),
+        actions: [
+          IconButton(
+            onPressed: signOut,
+            icon: const Icon(Icons.logout),
+          )
+        ],
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        items: const [
+          Icon(Icons.heart_broken),
+          Icon(Icons.search),
+          Icon(Icons.settings)
+        ],
+        backgroundColor: Colors.purple,
+        color: Colors.purple.shade200,
+        animationCurve: Curves.ease,
       ),
       body: _buildUserList(),
     );
   }
 
   //build a list of users except for the currently logged in user.
-  Widget _buildUserList(){
+  Widget _buildUserList() {
     return StreamBuilder(
       stream: FirebaseFirestore.instance.collection('users').snapshots(),
-      builder: (context,snapshot){
-        if(snapshot.hasError){
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
           return const Text('Error');
         }
-        if(snapshot.connectionState == ConnectionState.waiting){
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return const Text('Loading...');
         }
 
         return ListView(
-          children: snapshot.data!.docs.map<Widget>((doc) => _buildUserListItem(doc)).toList(),
+          children: snapshot.data!.docs
+              .map<Widget>((doc) => _buildUserListItem(doc))
+              .toList(),
         );
       },
     );
   }
 
   //build individual user list items
-  Widget _buildUserListItem(DocumentSnapshot document){
-    Map<String,dynamic> data = document.data()! as Map<String,dynamic>;
+  Widget _buildUserListItem(DocumentSnapshot document) {
+    Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
     //display all users except the currently logged in user
-    if(_auth.currentUser!.email != data['email']){
+    if (_auth.currentUser!.email != data['email']) {
       return ListTile(
-        title: Text(data['email']),
-        onTap: () {
-          //pass the clicked user's UID to the chat page
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ChatPage(
-            receiverUserEmail: data['email'],
-            receiverUserID: data['uid'],
-          )));
-        }
-      );
-    }
-    else{
+          title: Text(data['email']),
+          onTap: () {
+            //pass the clicked user's UID to the chat page
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ChatPage(
+                          receiverUserEmail: data['email'],
+                          receiverUserID: data['uid'],
+                        )));
+          });
+    } else {
       //return an empty container
       return Container();
-    } 
+    }
   }
 }

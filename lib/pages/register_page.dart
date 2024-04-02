@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:lottie/lottie.dart';
 import 'package:trendcraft/services/auth/auth_service.dart';
 
 import '../components/my_button.dart';
@@ -56,9 +57,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       const SizedBox(height: 50),
 
                       //logo
-                      SizedBox(
-                          height: 140,
-                          child: Image.asset('assets/images/logo.png')
+                      Container(
+                          height: 200,
+                          margin: const EdgeInsets.only(bottom: 25),
+                          child: Lottie.asset('assets/animations/register.json')
                       ),
                       //Welcome back Message
                       const Text("Let's create an account for you!",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:trendcraft/components/my_button.dart';
 import 'package:trendcraft/components/my_text_field.dart';
@@ -52,9 +53,10 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 50),
 
                   //logo
-                  SizedBox(
-                    height: 140,
-                    child: Image.asset('assets/images/logo.png')
+                  Container(
+                    height: 200,
+                    margin: const EdgeInsets.only(bottom: 25),
+                    child: Lottie.asset('assets/animations/Signin.json'),
                   ),
 
                   //Create account message

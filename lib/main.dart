@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:trendcraft/services/auth/auth_gate.dart';
 import 'package:trendcraft/services/auth/auth_service.dart';
-import 'package:trendcraft/themes/app_theme.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -20,7 +20,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: themeData,
+      theme: ThemeData(
+        useMaterial3: true,
+        primarySwatch: Colors.yellow,
+        scaffoldBackgroundColor: Colors.purple,
+        textTheme: GoogleFonts.poppinsTextTheme(),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.orange,
+        )
+      ),
       debugShowCheckedModeBanner: false,
       home: const AuthGate(),
     );

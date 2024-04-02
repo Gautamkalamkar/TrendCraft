@@ -35,7 +35,6 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.receiverUserEmail)),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           //messages
           Expanded(child: _buildMessageList()),
