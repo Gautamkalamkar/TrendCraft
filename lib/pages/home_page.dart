@@ -37,9 +37,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         items: const [
-          Icon(Icons.heart_broken),
-          Icon(Icons.search),
-          Icon(Icons.settings)
+          Icon(Icons.chat_rounded),
+          Icon(Icons.videocam_rounded),
         ],
         backgroundColor: Colors.purple,
         color: Colors.purple.shade200,
