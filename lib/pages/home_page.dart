@@ -16,6 +16,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   //create an auth instance
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  //set up an initial selectedindex
+  int _selectedIndex = 0;
 
   //sign out user
   void signOut() {
@@ -27,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('TrendCraft'),
         actions: [
           IconButton(
             onPressed: signOut,
@@ -35,16 +37,40 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
+      drawer: Drawer(
+        backgroundColor: Colors.cyan.shade200,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              //The icon of the app
+              DrawerHeader(child: Image.asset('assets/images/logo.png',height: 130, width: 130,)),
+              
+              //ListTile for Settings
+              const ListTile(
+                leading: Icon(Icons.dark_mode_rounded),
+                title: Text('Modes'),
+              ),
+            ],
+          ),
+        ),
+      ),
       bottomNavigationBar: CurvedNavigationBar(
+        index: _selectedIndex,
         items: const [
           Icon(Icons.chat_rounded),
           Icon(Icons.videocam_rounded),
         ],
-        backgroundColor: Colors.purple,
-        color: Colors.purple.shade200,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        backgroundColor: (Colors.blueGrey[200])!,
+        color: Colors.cyan.shade500,
         animationCurve: Curves.ease,
       ),
-      body: _buildUserList(),
+      body: Padding(padding: const EdgeInsets.only(top: 10, left: 10), child: _buildUserList()),
     );
   }
 
@@ -56,8 +82,10 @@ class _HomePageState extends State<HomePage> {
         if (snapshot.hasError) {
           return const Text('Error');
         }
+
+        // This is the waiting stage to load data from firebase
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text('Loading...');
+          return const Text('');
         }
 
         return ListView(

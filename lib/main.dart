@@ -28,11 +28,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.yellow,
-        scaffoldBackgroundColor: Colors.purple,
+        scaffoldBackgroundColor: Colors.blueGrey[200],
         textTheme: GoogleFonts.poppinsTextTheme(),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.orange,
+
+        //appbar theme
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.green[400],
+          titleTextStyle:  GoogleFonts.mukta(
+            fontSize: 23,
+            color: Colors.black87,
+          ),
         )
       ),
       debugShowCheckedModeBanner: false,
