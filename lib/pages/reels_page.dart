@@ -8,16 +8,15 @@ class ReelsPage extends StatefulWidget {
 }
 
 class _ReelsPageState extends State<ReelsPage> {
-
-  final List<String> videos = [
-    '/assets/videos/short1.mp4',
-    '/assets/videos/short2.mp4',
-    '/assets/videos/short3.mp4'
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Reels Page"),),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: const Icon(Icons.arrow_back_ios_new_rounded)),
+      ),
     );
   }
 }

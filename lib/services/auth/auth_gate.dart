@@ -15,6 +15,7 @@ class AuthGate extends StatelessWidget {
           //user is logged in
           if(snapshot.hasData) {
             return const HomePage();
+            // return const ReelsPage(src: 'https://www.youtube.com/shorts/JsPrQ655hJA');
           } else {
             return const LoginOrRegister();
           }
